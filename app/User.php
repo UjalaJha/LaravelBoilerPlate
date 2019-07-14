@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'age','password',
     ];
 
     /**
@@ -25,7 +25,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        // 'password', 'remember_token',
+        'password'
     ];
 
     /**
@@ -34,6 +35,17 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        // 'email_verified_at' => 'datetime',
+        'created_on' => 'datetime',
+
     ];
+
+
+    protected $table = 'users';
+    protected $primaryKey = 'user_id';
+    public $timestamps = false;
+    public function post(){
+        return $this->hasMany('App\Post','user_id');
+    }
+    
 }
