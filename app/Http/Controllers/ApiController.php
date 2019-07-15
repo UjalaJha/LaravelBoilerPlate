@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Mail;
 use App\Http\Resources\GeneralResources as GeneralResources;
 class ApiController extends Controller
 {
@@ -84,5 +85,20 @@ class ApiController extends Controller
         	$dataModel['error'] = true;
         }
         return new GeneralResources($dataModel);
+    }
+
+    public function sendmail(){
+    	$to_name = 'Ujala Jha';
+		$to_email = '2016.ujala.jha@ves.ac.in';
+		$data = array('title'=>"Hello There", "body" => "Ujala Here, You are best");
+		    
+		Mail::send('email',$data, function($message) use ($to_name, $to_email) {
+		    $message->to($to_email,$to_name)
+		            ->subject('Artisans Web Testing Mail')
+		            ->from('jhaujala3@gmail.com','Ujala J.');
+		   
+		});
+
+        return response()->json(['message' => 'Request completed']);
     }
 }

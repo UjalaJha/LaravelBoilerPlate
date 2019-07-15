@@ -21,3 +21,4 @@ Route::post('adduser','ApiController@adduser');
 Route::post('updateuser/{id}','ApiController@updateuser');
 Route::get('getuser/{id}','ApiController@getuser');
 Route::get('destroyuser/{id}','ApiController@destroyuser');
+Route::get('sendmail','ApiController@sendmail');
