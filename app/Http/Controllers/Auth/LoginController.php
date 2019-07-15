@@ -36,6 +36,8 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        $this->middleware('preventBackHistory');
+
     }
     /**
       * Redirect the user to the Google authentication page.
