@@ -39,23 +39,10 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
-                            <!-- <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif -->
-                            <li class="nav-item"><a class="nav-link"href="{{ url('/login') }}">Login User</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ url('/admin/login') }}">Login Admin</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">Register User</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ url('/admin/register') }}">Register Admin</a></li>
-                        @else
+                         @if(Auth::guard('admin')->user())
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::guard('admin')->user()->name  }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -70,6 +57,13 @@
                                     </form>
                                 </div>
                             </li>
+                           
+                            
+                        @else
+                            <li class="nav-item"><a class="nav-link"href="{{ url('/login') }}">Login User</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url('/admin/login') }}">Login Admin</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">Register User</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url('/admin/register') }}">Register Admin</a></li>
                         @endguest
                     </ul>
                 </div>
