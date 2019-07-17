@@ -37,3 +37,11 @@ Route::post('admin/register', 'AdminAuth\RegisterController@register');
 Route::get('/admin/home', 'AdminController@index');
 Route::get('/admin/logout','AdminAuth\LoginController@logout');
 //Admin route Ends
+
+
+//fetch api route starts
+Route::get('/fetchusers', 'FetchApiController@fetchusers');
+Route::get('/createuser', 'FetchApiController@createuser');
+Route::get('/deleteuser', 'FetchApiController@deleteuser');
+
+//fetch api route ends
